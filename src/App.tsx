@@ -4,12 +4,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import LoginPage from './page/login/login.component';
+import ProfilePage from './page/profile/profile.component';
 import SignUpPage from './page/signup/signup.component';
 
 function App() {
   return (
     <Router>
       <Switch>
+        <Route path='/profile'>
+          <ProfilePage />
+        </Route>
         <Route path='/sign-up'>
           <SignUpPage />
         </Route>

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import Box from '@material-ui/core/Box';
-import { Button, TextField, Typography } from '@material-ui/core';
+import { Button, Snackbar, TextField, Typography } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 
 import useStyles from './signup.styles';
@@ -20,6 +20,7 @@ const SignUpPage = () => {
   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [errors, setErrors] = React.useState(errorState);
   const [showAlert, setShowAlert] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     if (errors.length > 0) {
@@ -54,11 +55,32 @@ const SignUpPage = () => {
     setPassword('');
     setConfirmPassword('');
 
-    history.push('/');
+    setOpen(true);
+    const successDisplayTimer = setTimeout(() => {
+      history.push('/');
+    }, 2000);
+
+    return () => clearTimeout(successDisplayTimer);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | React.MouseEvent,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
   };
 
   return (
     <>
+      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity='success'>
+          Account Created Successfully
+        </Alert>
+      </Snackbar>
       <Box component='form' onSubmit={handleSubmit} className={classes.box}>
         <Typography variant='h2' className={classes.heading}>
           Sign Up
