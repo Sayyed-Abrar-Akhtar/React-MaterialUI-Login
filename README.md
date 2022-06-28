@@ -6,9 +6,10 @@ Note: This project was bootstrapped with [Create React App](https://github.com/f
 
 ## Returning your solution
 
-- Make a copy of this repository in your github/bitbucket/gitlab account.
-- Make changes, commit them, and push them into your repository.
-- Share us the url of your source code and deployed url link after completion.
+- Made a copy of this repository in my GitHub account (/Sayyed-Abrar-Akhtar).
+- Added Login and Sign up design with MaterialUI components and developed functionality to perform login and signup"
+- [Project GitHub Repo:](https://www.google.com).
+- [Project Live URL:](https://www.google.com).
 
 ## Prerequisite
 

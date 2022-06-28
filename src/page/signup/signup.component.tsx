@@ -8,7 +8,6 @@ import Alert from '@material-ui/lab/Alert';
 
 import useStyles from './signup.styles';
 import SignUpValidation from '../../utils/SignUpValidation';
-import { error } from 'console';
 
 const SignUpPage = () => {
   const history = useHistory();

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import Box from '@material-ui/core/Box';
 import { Button, Snackbar, TextField, Typography } from '@material-ui/core';
