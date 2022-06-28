@@ -1,51 +1,37 @@
 import React from 'react';
 
 import Box from '@material-ui/core/Box';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, TextField, Typography } from '@material-ui/core';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    heading: {
-      margin: '25px 0',
-    },
-    box: {
-      display: 'flex',
-      flexDirection: 'column',
-      width: '90%',
-      margin: '10ch 5%',
-      [theme.breakpoints.up('sm')]: {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '50ch',
-        margin: '10ch auto',
-      },
-    },
-    formControl: {
-      margin: '10px 0',
-    },
-    btn: {
-      height: '7ch',
-    },
-  })
-);
+import { Link, useHistory } from 'react-router-dom';
+import useStyles from './login.styles';
+import { Alert } from '@material-ui/lab';
 
 const LoginPage = () => {
   const classes = useStyles();
+
+  const history = useHistory();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const [error, setError] = React.useState('');
+
+  const userCredentialsFromLocalStrorage =
+    localStorage.getItem('userCredentials');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(
-      'email: ',
-      email,
-      ', Password: ',
-      password,
-      ' and Confirm Password: ',
-      confirmPassword
-    );
+    const userCredentials =
+      userCredentialsFromLocalStrorage !== null
+        ? JSON.parse(userCredentialsFromLocalStrorage)
+        : null;
+
+    if (
+      userCredentials.email === email &&
+      userCredentials.password === password
+    ) {
+      history.push('/abc');
+    } else {
+      setError('Invalid credentials');
+    }
   };
 
   return (
@@ -53,7 +39,15 @@ const LoginPage = () => {
       <Typography variant='h2' className={classes.heading}>
         Login
       </Typography>
+      <div className={classes.error_box}>
+        {error && (
+          <Alert severity='error' className={classes.error}>
+            {error}
+          </Alert>
+        )}
+      </div>
       <TextField
+        name='email'
         className={classes.formControl}
         variant='outlined'
         id='outlined-name'
@@ -65,6 +59,7 @@ const LoginPage = () => {
         }
       />
       <TextField
+        name='password'
         className={classes.formControl}
         variant='outlined'
         id='outlined-name'
@@ -75,17 +70,7 @@ const LoginPage = () => {
           setPassword(e.target.value)
         }
       />
-      <TextField
-        className={classes.formControl}
-        variant='outlined'
-        id='outlined-name'
-        label='Confirm Password'
-        type='password'
-        value={confirmPassword}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setConfirmPassword(e.target.value)
-        }
-      />
+
       <Button
         type='submit'
         variant='contained'
@@ -94,6 +79,17 @@ const LoginPage = () => {
       >
         Login
       </Button>
+      <Box
+        sx={{ display: 'flex', justifyContent: 'flex-start' }}
+        className={classes.no_account}
+      >
+        <Typography variant='body1'>Do not have an account?</Typography>
+        <Link to='/sign-up'>
+          <Button color='primary' className={classes.link}>
+            Create one
+          </Button>
+        </Link>
+      </Box>
     </Box>
   );
 };
