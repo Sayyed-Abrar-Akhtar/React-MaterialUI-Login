@@ -6,7 +6,7 @@ Note: This project was bootstrapped with [Create React App](https://github.com/f
 
 ## Returning your solution
 
-- Made a copy of this repository in my GitHub account (/Sayyed-Abrar-Akhtar).
+- [Made a copy of this repository in my GitHub account] (https://github.com/Sayyed-Abrar-Akhtar/React-MaterialUI-Login/).
 - Added Login and Sign up design with MaterialUI components and developed functionality to perform login and signup"
 - [Project GitHub Repo:](https://github.com/Sayyed-Abrar-Akhtar/React-MaterialUI-Login).
 - [Project Live URL:](https://react-material-ui-login.vercel.app/).
