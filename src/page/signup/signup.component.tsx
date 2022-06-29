@@ -82,7 +82,7 @@ const SignUpPage = () => {
       </Snackbar>
       <Box component='form' onSubmit={handleSubmit} className={classes.box}>
         <Typography variant='h2' className={classes.heading}>
-          Sign Up
+          Create New Account
         </Typography>
         <div className={classes.error_box}>
           {showAlert &&
@@ -94,6 +94,7 @@ const SignUpPage = () => {
             ))}
         </div>
         <TextField
+          data-testid='email'
           className={classes.form_control}
           variant='outlined'
           id='outlined-name'
@@ -105,6 +106,7 @@ const SignUpPage = () => {
           }
         />
         <TextField
+          data-testid='password'
           className={classes.form_control}
           variant='outlined'
           id='outlined-name'
@@ -116,6 +118,7 @@ const SignUpPage = () => {
           }
         />
         <TextField
+          data-testid='confirm-password'
           className={classes.form_control}
           variant='outlined'
           id='outlined-name'
@@ -127,6 +130,7 @@ const SignUpPage = () => {
           }
         />
         <Button
+          data-testid='sign-up'
           className={`${classes.btn} ${classes.form_control}`}
           type='submit'
           variant='contained'

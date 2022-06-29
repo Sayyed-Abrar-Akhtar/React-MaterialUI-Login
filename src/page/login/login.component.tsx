@@ -36,6 +36,11 @@ const LoginPage = () => {
         ? JSON.parse(userCredentialsFromLocalStrorage)
         : null;
 
+    if (userCredentials === null) {
+      setError('Invalid credentials');
+      return;
+    }
+
     if (
       userCredentials.email === email &&
       userCredentials.password === password
@@ -52,6 +57,7 @@ const LoginPage = () => {
       return () => clearTimeout(successDisplayTimer);
     } else {
       setError('Invalid credentials');
+      return;
     }
   };
 
@@ -85,6 +91,7 @@ const LoginPage = () => {
           )}
         </div>
         <TextField
+          data-testid='email'
           name='email'
           className={classes.formControl}
           variant='outlined'
@@ -97,6 +104,7 @@ const LoginPage = () => {
           }
         />
         <TextField
+          data-testid='password'
           name='password'
           className={classes.formControl}
           variant='outlined'
@@ -110,12 +118,13 @@ const LoginPage = () => {
         />
 
         <Button
+          data-testid='login'
           type='submit'
           variant='contained'
           color='primary'
           className={`${classes.btn} ${classes.formControl}`}
         >
-          Login
+          Sign In
         </Button>
         <Box
           sx={{ display: 'flex', justifyContent: 'flex-start' }}
@@ -123,7 +132,11 @@ const LoginPage = () => {
         >
           <Typography variant='body1'>Do not have an account?</Typography>
           <Link to='/sign-up'>
-            <Button color='primary' className={classes.link}>
+            <Button
+              color='primary'
+              className={classes.link}
+              data-testid='create-one'
+            >
               Create one
             </Button>
           </Link>

@@ -43,7 +43,8 @@ Hints: Use material design for the [ui](https://material-ui.com/) and feel free 
 
 ### [4] Testing
 
-- Write unit test for the app. (tips: [testing-library](https://testing-library.com/))
+- Written unit test for rendering Login Page and Sign Up Page
+- Written unit test for login and sign up functionality
 
 ### [5] Documentation
 
